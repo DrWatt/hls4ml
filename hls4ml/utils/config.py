@@ -201,6 +201,8 @@ def config_from_keras_model(model, granularity='model', default_precision='ap_fi
         for layer in layer_list:
             if layer['class_name'] == 'InputLayer': # Skip INputLayer
                 continue
+            if layer['class_name'] == 'Activation': # Skip INputLayer
+                continue
             layer_config = make_layer_config(layer)
             name_config[layer['name']] = layer_config
         
